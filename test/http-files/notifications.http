@@ -1,0 +1,54 @@
+// examples: https://httpyac.github.io/guide/request.html
+# @no-reject-unauthorized
+@hostApi=http://127.0.0.1:3000
+
+{{+after
+  console.log(JSON.stringify(response, ' ', 2));
+}}
+
+
+###
+# @name cancel-notification
+
+GET {{hostApi}}/notifications/9b18a549-f148-495c-ab45-b7a3c7e140f9/cancel
+Content-Type: application/json
+
+
+###
+# @name read-notification
+
+GET {{hostApi}}/notifications/9b18a549-f148-495c-ab45-b7a3c7e140f9/read
+Content-Type: application/json
+
+
+###
+# @name unread-notification
+
+GET {{hostApi}}/notifications/9b18a549-f148-495c-ab45-b7a3c7e140f9/unread
+Content-Type: application/json
+
+
+###
+# @name create-notification
+
+POST {{hostApi}}/notifications
+Content-Type: application/json
+{
+  "recipientId": "cc947937-1732-4909-9519-92b9fa2c4b63",
+	"content": "This is a notification",
+	"category": "social"
+}
+
+
+###
+# @name count-from-recipient
+
+GET {{hostApi}}/notifications/count/from/cc947937-1732-4909-9519-92b9fa2c4b63
+Content-Type: application/json
+
+
+###
+# @name get-from-recipient
+
+GET {{hostApi}}/notifications/from/cc947937-1732-4909-9519-92b9fa2c4b63
+Content-Type: application/json
